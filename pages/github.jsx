@@ -1,16 +1,14 @@
-import GitHubCalendar from 'react-github-calendar';
-import RepoCard from '../components/RepoCard';
-import styles from '../styles/GithubPage.module.css';
+import GitHubCalendar from "react-github-calendar";
+import RepoCard from "../components/RepoCard";
+import styles from "../styles/GithubPage.module.css";
 
 const GithubPage = ({ repos, user }) => {
-  console.log("user >>>>>>>", user);
-  
   const theme = {
-    level0: '#161B22',
-    level1: '#0e4429',
-    level2: '#006d32',
-    level3: '#26a641',
-    level4: '#39d353',
+    level0: "#161B22",
+    level1: "#0e4429",
+    level2: "#006d32",
+    level3: "#26a641",
+    level4: "#39d353",
   };
 
   return (
@@ -38,7 +36,7 @@ const GithubPage = ({ repos, user }) => {
           <RepoCard key={repo.id} repo={repo} />
         ))}
       </div>
-      
+
       <div className={styles.contributions}>
         <GitHubCalendar
           username={process.env.NEXT_PUBLIC_GITHUB_USERNAME}
@@ -60,13 +58,15 @@ export async function getStaticProps() {
   const repoRes = await fetch(
     `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?per_page=100`
   );
-  
+
   let repos = await repoRes.json();
-  
-  repos = repos?.sort((a, b) => b.stargazers_count - a.stargazers_count)?.slice(0, 6);
+
+  repos = repos
+    ?.sort((a, b) => b.stargazers_count - a.stargazers_count)
+    ?.slice(0, 6);
 
   return {
-    props: { title: 'GitHub', repos, user },
+    props: { title: "GitHub", repos, user },
     revalidate: 10,
   };
 }

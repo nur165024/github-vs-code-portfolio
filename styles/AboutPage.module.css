@@ -1,0 +1,25 @@
+.outlined {
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  color: #eee;
+  border: 2px solid var(--accent-color);
+  background: transparent;
+  cursor: pointer;
+}
+.outlined:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.form textarea {
+  font-family: "JetBrains Mono";
+  margin-bottom: 1.5rem;
+  background: var(--article-bg);
+  color: var(--text-color);
+  border: 1px solid #363b40;
+  font-size: 1rem;
+  padding: 0.75rem;
+  width: 100%;
+  resize: none;
+}
+.form textarea:focus {
+  outline: 1px solid var(--accent-color);
+}

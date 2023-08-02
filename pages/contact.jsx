@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import ContactCode from '../components/ContactCode';
-import styles from '../styles/ContactPage.module.css';
+import { useState } from "react";
+import ContactCode from "../components/ContactCode";
+import styles from "../styles/ContactPage.module.css";
 
 const ContactPage = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
   const submitForm = async (e) => {
     e.preventDefault();
-    
+
     // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact`, {
     //   method: 'POST',
     //   body: JSON.stringify({ name, email, subject, message }),
     // });
-    
+
     // if (res.ok) {
     //   alert('Your response has been received!');
     //   setName('');
@@ -33,6 +33,7 @@ const ContactPage = () => {
         <h3 className={styles.heading}>Reach Out Via Socials</h3>
         <ContactCode />
       </div>
+
       <div>
         <h3 className={styles.heading}>Or Fill Out This Form</h3>
         <form className={styles.form} onSubmit={submitForm}>
@@ -91,7 +92,7 @@ const ContactPage = () => {
 
 export async function getStaticProps() {
   return {
-    props: { title: 'Contact' },
+    props: { title: "Contact" },
   };
 }
 

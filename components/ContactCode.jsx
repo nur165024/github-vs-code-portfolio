@@ -60,7 +60,7 @@ const ContactCode = () => {
         <span className={styles.className}>.socials</span> &#123;
       </p>
       {contactItems.slice(0, 8).map((item, index) => (
-        <p className={styles.line} key={index}>
+        <p className={styles.line} key={index+1}>
           &nbsp;&nbsp;&nbsp;{item.social}:{' '}
           <a href={item.href} target="_blank" rel="noopener">
             {item.link}
@@ -69,7 +69,7 @@ const ContactCode = () => {
         </p>
       ))}
       {contactItems.slice(8, contactItems.length).map((item, index) => (
-        <p className={styles.line} key={index}>
+        <p className={styles.line} key={index+1}>
           &nbsp;&nbsp;{item.social}:{' '}
           <a href={item.href} target="_blank" rel="noopener">
             {item.link}

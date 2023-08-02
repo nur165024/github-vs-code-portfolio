@@ -1,19 +1,58 @@
+import { useEffect, useState } from "react";
+import styles from "../styles/AboutPage.module.css";
+
 const AboutPage = () => {
+  const [message, setMessage] = useState("");
+  const [isDataSave, setIsDataSave] = useState(false);
+
+  const handleSaveInfo = (e) => {
+    e.preventDefault();
+    localStorage.setItem("saveInfo", message);
+    setIsDataSave(!isDataSave);
+  };
+
+  useEffect(() => {
+    let value;
+    // Get the value from local storage if it exists
+    value = localStorage.getItem("saveInfo") || "";
+    setMessage(value);
+  }, []);
+
   return (
-    <>
-      <h3>I am a professional Full Stack web Application
-        developer. I have been professionally working in this
-        field for 1 year. During that year, I have worked with Javascript,
-        ES6, React JS, Redux, NodeJs, Express Js, Mongodb, Mongoose, Rest API, NPM,
-        Bootstrap 5, Tailwind CSS, CSS 3 HTML 5 & many
-      more.At present, I want to improve myself as a developer by working in a progressive software company that provide sufficient scopes to enhance & utilize my existing skills.</h3>
-    </>
+    <div className={styles.container}>
+      <div>
+        {!isDataSave ? (
+          <h3>{message}</h3>
+        ) : (
+          <form className={styles.form}>
+            <textarea
+              name="message"
+              id="message"
+              rows="8"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            ></textarea>
+          </form>
+        )}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "end", marginTop: 20 }}>
+        <button
+          onClick={handleSaveInfo}
+          type="button"
+          className={styles.outlined}
+        >
+          {!isDataSave ? "+" : "Save"}
+        </button>
+      </div>
+    </div>
   );
 };
 
 export async function getStaticProps() {
   return {
-    props: { title: 'About' },
+    props: { title: "About" },
   };
 }
 
